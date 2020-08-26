@@ -22,7 +22,7 @@ class WorkerStatus {
 
 ## 启动一个推流任务
 
-**Path：** /youmu/pusher
+**Path：** /pusher
 
 **Method：** POST
 
@@ -48,7 +48,7 @@ class WorkerStatus {
             
 ## 停止一个推流
 
-**Path：** /youmu/pushers
+**Path：** /pushers
 
 **Method：** DELETE
 
@@ -68,7 +68,7 @@ class WorkerStatus {
             
 ## 查看推流进程状态
 
-**Path：** /youmu/pushers/status
+**Path：** /pushers/status
 
 **Method：** GET
 
