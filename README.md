@@ -1,11 +1,52 @@
-# FFmpegPusher接口
+# FFmpegWebPusher
+基于FFmpeg、SpringBoot、JavaCV开发的远程推流服务，可通过http-api实现远程拉流、推流、转发流等功能，实现拉流直播、第三方直播等功能。
+
+# 环境与依赖
+```
+IDE:     IDEA           : IDEA-2018
+Build:   Maven          : 3.6.3
+VERSION: SpringBoot     : 2.2.2
+VERSION: JDK            : Oracle 8u201
+VERSION: FFMPEG         : 4.0.6
+VERSION: GLIBC          : 2.29
+```
+
+# 使用
+## 1. 容器部署
+由于同时需要java8以及ffmpeg环境，为了部署方便，通过容器的方式简化部署流程。
+
+镜像地址：[ffmpeg-web-pusher](https://hub.docker.com/r/zwboy/ffmpeg-web-pusher)
+
+```
+# 拉取镜像
+docker pull zwboy/ffmpeg-web-pusher
+# 运行容器
+docker run -d -it -p 8080:8080 zwboy/ffmpeg-web-pusher
+# 访问接口
+http://localhost:8080/pushers/status?id=12345
+# 进入容器
+docker exec -it container_id
+```
+
+## 2. 使用jar部署
+使用SpringBoot基于IDEA开发，使用Maven进行依赖管理
+``` 
+1. git clone 项目代码
+2. 将项目导入到IDEA中，以Maven项目导入
+3. 运行测试系统，是否工作正常
+4. 使用maven对SpringBoot进行打包，生成的jar包位于target目录下
+5. 在服务器上安装java8以及ffmpeg环境，ffmpeg版本建议大于4.0
+6. 将jar包上传到服务器，执行命令: nohup java -jar app.jar --server.port=8080 & 
+```
+
+# HTTP接口定义
 
 ## PushTask定义
 ```java
 class PushTask {
     String id;          // 推流任务id,唯一,基于该id对任务进行管理
     String pushSrcUrl;  // 推流源地址，可以是直播地址，或者文件地址
-    String pushDescUrl; //  推理目的地址，一般为rtmp直播地址
+    String pushDescUrl; // 推流目的地址，一般为RTMP直播地址
 }
 ```
 ## WorkerStatus定义
