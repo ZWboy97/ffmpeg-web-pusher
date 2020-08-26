@@ -63,7 +63,7 @@ class WorkerStatus {
 
 ## 启动一个推流任务
 
-**Path：** /pusher
+**Path：** /pushers
 
 **Method：** POST
 
