@@ -11,6 +11,12 @@ VERSION: FFMPEG         : 4.0.6
 VERSION: GLIBC          : 2.29
 ```
 
+# 特性
+1. 通过SpringBoot提供 Restful API
+2. 使用Java线程池技术，支持并发推流
+3. 使用[JavaCV](https://github.com/bytedeco/javacv)，相比直接掉用ffmpeg命令行，更加灵活，支持更多的定制。
+4. 容器化部署，简化部署流程
+
 # 使用
 ## 1. 容器部署
 由于同时需要java8以及ffmpeg环境，为了部署方便，通过容器的方式简化部署流程。
