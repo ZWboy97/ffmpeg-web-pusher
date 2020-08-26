@@ -74,6 +74,7 @@ public class PushWorker implements Runnable {
             log.error("推流服务异常");
         }
         CacheUtil.PUSHWORKERMAP.remove(pushTask.getId());
+        log.debug("从cache移除，id="+pushTask.getId());
     }
 
     public void startGrabber() throws Exception {
@@ -119,10 +120,14 @@ public class PushWorker implements Runnable {
                 AVPacket pkt = null;
                 // 获取没有解码的音视频帧
                 pkt = grabber.grabPacket();
-                recorder.recordPacket(pkt);
-                av_packet_unref(pkt);
+                if(pkt!=null){
+                    recorder.recordPacket(pkt);
+                    av_packet_unref(pkt);
+                }else{
+                    isRunning = false;
+                }
             } catch (InterruptedException e) {
-                log.error("推拉流进程出现异常");
+                log.error("拉流进程出现异常");
                 isRunning = false;
             }
         }
@@ -131,6 +136,5 @@ public class PushWorker implements Runnable {
         recorder.stop();
         recorder.close();
     }
-
 
 }
