@@ -1,6 +1,8 @@
 # FFmpegWebPusher
 基于FFmpeg、SpringBoot、JavaCV开发的远程推流服务，可通过http-api实现远程拉流、推流、转发流等功能，实现拉流直播、第三方直播等功能。
 
+P.S. 之前使用node实现的简易版，[web-ffmpeg-handler-nodejs](https://github.com/ZWboy97/web-ffmpeg-handler)
+
 # 环境与依赖
 ```
 IDE:     IDEA           : IDEA-2018
