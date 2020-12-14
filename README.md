@@ -53,7 +53,7 @@ docker exec -it container_id
 ```java
 class PushTask {
     String id;          // 推流任务id,唯一,基于该id对任务进行管理
-    String pushSrcUrl;  // 推流源地址，可以是直播地址，或者文件地址
+    String pushSrcUrl;  // 推流源地址，一般为RTMP地址(暂不支持文件推流，之后有空计划支持，欢迎PR)
     String pushDescUrl; // 推流目的地址，一般为RTMP直播地址
 }
 ```
